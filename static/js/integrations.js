@@ -237,7 +237,8 @@ const trivyIntegration = {
             }).then(response => {
                 this.is_fetching = false
                 if (response.ok) {
-                     this.$emit('update', {...this.$data, section_name: this.section_name})
+                    delete this.$data['id']
+                    this.$emit('update', {...this.$data, section_name: this.section_name})
                 } else {
                     this.handleError(response)
                     alertMain.add(`Deletion error. <button class="btn btn-primary" @click="modal.modal('show')">Open modal<button>`)
